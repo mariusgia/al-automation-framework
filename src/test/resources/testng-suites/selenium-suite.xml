@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Selenium Suite" parallel="false">
+    <parameter name="url" value="http://react-app.zxp.ro:3000"/>
+    <parameter name="browser" value="chrome"/> <!-- Can be: chrome, firefox, ie, edge, safari -->
+    <test name="Login Selenium Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="tests.selenium.LoginTests"/>
+        </classes>
+    </test>
+    <test name="Item Selenium Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="tests.selenium.ItemTests"/>
+        </classes>
+    </test>
+</suite>
