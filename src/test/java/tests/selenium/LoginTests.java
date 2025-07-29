@@ -29,7 +29,7 @@ public class LoginTests extends BaseTest {
         login = new LoginPage(driver);
         login.goTo(url);
         login.submitCredentials("", "");
-        Assert.assertEquals(login.getAlertMessage(), "Authentication should fail");
+        Assert.assertEquals(login.waitAndGetAlertMessage(), "Login failed", "Authentication should fail");
     }
 
     @Parameters({"url"})
@@ -38,7 +38,7 @@ public class LoginTests extends BaseTest {
         login = new LoginPage(driver);
         login.goTo(url);
         login.submitCredentials(envConfig.getProperty("username"), "");
-        Assert.assertEquals(login.getAlertMessage(), "Authentication should fail");
+        Assert.assertEquals(login.waitAndGetAlertMessage(), "Login failed", "Authentication should fail");
     }
 
     @Parameters({"url"})
@@ -47,6 +47,6 @@ public class LoginTests extends BaseTest {
         login = new LoginPage(driver);
         login.goTo(url);
         login.submitCredentials(envConfig.getProperty("username"), "adsa76das");
-        Assert.assertEquals(login.getAlertMessage(), "Authentication should fail");
+        Assert.assertEquals(login.waitAndGetAlertMessage(), "Login failed", "Authentication should fail");
     }
 }

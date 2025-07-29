@@ -55,13 +55,6 @@ public class BasePage {
         }
     }
 
-    public String getAlertMessage() {
-        Alert alertDialog = driver.switchTo().alert();
-        String alertText = alertDialog.getText();
-        alertDialog.accept();
-        return alertText;
-    }
-
     public static String getTextNode(WebElement e) {
         String text = e.getText().trim();
         List<WebElement> children = e.findElements(By.xpath("./*"));
@@ -83,5 +76,27 @@ public class BasePage {
         Duration duration = Duration.ofSeconds(10);
         WebDriverWait wait = new WebDriverWait (driver, duration);
         wait.until(ExpectedConditions.invisibilityOf(e));
+    }
+
+    public String waitAndGetAlertMessage() {
+        String alertText = "";
+        for (int i = 0; i < 5; i++) {
+            try
+            {
+                Alert alertDialog = driver.switchTo().alert();
+                alertText = alertDialog.getText();
+                alertDialog.accept();
+                break;
+            }
+            catch(NoAlertPresentException e)
+            {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        }
+        return alertText;
     }
 }

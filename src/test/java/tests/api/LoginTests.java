@@ -24,7 +24,7 @@ public class LoginTests extends BaseApi {
 
         // Validate status code
         int statusCode = response.getStatusCode();
-        assertEquals("Unexpected status code", statusCode, 200);
+        assertEquals("Unexpected status code", 200, statusCode);
         // Validate Success
         assertTrue(response.path("success"));
         // Validate Token
@@ -41,10 +41,10 @@ public class LoginTests extends BaseApi {
 
         // Validate status code
         int statusCode = response.getStatusCode();
-        assertEquals("Authentication should fail", statusCode, 401);
+        assertEquals("Authentication should fail", 401, statusCode);
         // Validate End Point Response
         assertFalse(response.path("success"));
-        assertEquals("Authentication should fail", response.path("message"), "Invalid credentials");
+        assertEquals("Authentication should fail", "Invalid credentials", response.path("message"));
     }
 
     @Test(description = "Login using Empty Credentials")
@@ -57,10 +57,10 @@ public class LoginTests extends BaseApi {
 
         // Validate status code
         int statusCode = response.getStatusCode();
-        assertEquals("Authentication should fail", statusCode, 401);
+        assertEquals("Authentication should fail", 401, statusCode);
         // Validate End Point Response
         assertFalse(response.path("success"));
-        assertEquals("Authentication should fail", response.path("message"), "Invalid credentials");
+        assertEquals("Authentication should fail", "Invalid credentials", response.path("message"));
     }
 
     @Test(description = "Login Invalid Password")
@@ -73,9 +73,9 @@ public class LoginTests extends BaseApi {
 
         // Validate status code
         int statusCode = response.getStatusCode();
-        assertEquals("Authentication should fail", statusCode, 401);
+        assertEquals("Authentication should fail", 401, statusCode);
         // Validate End Point Response
         assertFalse(response.path("success"));
-        assertEquals("Authentication should fail", response.path("message"), "Invalid credentials");
+        assertEquals("Authentication should fail", "Invalid credentials", response.path("message"));
     }
 }

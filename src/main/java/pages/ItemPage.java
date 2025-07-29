@@ -29,6 +29,7 @@ public class ItemPage extends BasePage {
         WebElement newItemInput = waitUntilElementIsClickable(driver, newItemField);
         newItemInput.sendKeys(itemName);
         addButton.click();
+        waitUntilElementIsClickable(driver, driver.findElement(By.cssSelector("input[value='" + itemName + "']")));
     }
 
     public void editEntry(String itemName, String newItemName) {
@@ -64,6 +65,7 @@ public class ItemPage extends BasePage {
     }
 
     public boolean isItemInList(String itemName) {
+        waitUntilElementIsClickable(driver, itemList.get(0));
         for (WebElement e: itemList) {
             String eText = getTextNode(e);
             if (eText.equals(itemName)) {

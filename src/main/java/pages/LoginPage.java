@@ -31,6 +31,7 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isLoginSuccessful() {
+        waitUntilButtonDisappears(loginButton);
         return !isElementPresent(loginButton);
     }
 }
