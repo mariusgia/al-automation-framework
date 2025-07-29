@@ -1,5 +1,6 @@
 About ai-automation-framework
 @author Marius Giuguleanu
+Credit to xstart.ro hosting
 
 Automation framework is created for API, Junit and Selenium testing
 
